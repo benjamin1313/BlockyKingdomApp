@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "io.github.benjamin1313.BlockyKingdomApp"
+        version     = "0.0.2" >
+
+    <name>BlockyKingdomAppen</name>
+
+    <description>
+        An app for the danish minecraft server BlockyKingdom.
+    </description>
+
+    <author href="http://benjamin1313.blogspot.dk/" email="astrocrafter@gmail.com">
+        Benjamin B. Frost aka benjamin1313
+    </author>
+    
+    <icon src="icon.png" />
+
+
+</widget>
