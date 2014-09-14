@@ -16,7 +16,33 @@
         </div><!-- /header -->
         
         <div data-role="content">
-                <p>Velkommen til server siden!</p>
+                <div id="node-id"></div>
+            <script><!--koden som heter infoen om serverens status-->
+                var ip = "46.4.90.169:25587";<!--ipen på den server som man skal havde status på//-->
+                var node = document.getElementById('node-id');
+                var newNode = document.createElement('p');
+                var newNode2 = document.createElement('p');
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "http://minecraft-api.com/v1/get/" + ip, true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4) {
+                        data = JSON.parse(xhr.responseText);
+                        if (data.status) {
+                            newNode.appendChild(document.createTextNode("serveren er Online"));
+                            node.appendChild(newNode);
+                            
+                            newNode2.appendChild(document.createTextNode("og der er " + data.players.online + "/" + data.players.max + " spillere online!"));
+                            node.appendChild(newNode2);
+
+                        } else {
+                            newNode.appendChild(document.createTextNode("serveren er Offline :["));
+                            node.appendChild(newNode);
+                        }
+                    }
+                }
+                xhr.send();
+            </script>
         </div><!-- /content -->
         
         <div data-role="footer" data-position="fixed">
