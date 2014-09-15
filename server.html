@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>server status</title>
+    <META charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css" type="text/css"/>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
@@ -11,39 +12,41 @@
 <body>
     <div data-role="page">
         <div data-role="header" data-position="fixed" >
-            <a href="index.html" data-role="button" data-icon="home">Home</a>
-            <h1>Home</h1>
+            <a href="index.html" rel="external" data-role="button" data-icon="home">Home</a>
+            <h1>server</h1>
         </div><!-- /header -->
         
         <div data-role="content">
                 <div id="node-id"></div>
+                <p>Serveren er <b id="isOnline"></b></p>
+                <p id="players"></p>
             <script><!--koden som heter infoen om serverens status-->
                 var ip = "46.4.90.169:25587";<!--ipen på den server som man skal havde status på//-->
-                var node = document.getElementById('node-id');
-                var newNode = document.createElement('p');
-                var newNode2 = document.createElement('p');
+                
+                function reload(){
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://minecraft-api.com/v1/get/" + ip, true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4) {
+                            data = JSON.parse(xhr.responseText);
+                            if (data.status) {
+                                document.getElementById('isOnline').innerHTML = 'online';
+                                
+                                document.getElementById('players').innerHTML = "og der er " + data.players.online + "/" + data.players.max + " spillere online!";
 
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", "http://minecraft-api.com/v1/get/" + ip, true);
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4) {
-                        data = JSON.parse(xhr.responseText);
-                        if (data.status) {
-                            newNode.appendChild(document.createTextNode("serveren er Online"));
-                            node.appendChild(newNode);
-                            
-                            newNode2.appendChild(document.createTextNode("og der er " + data.players.online + "/" + data.players.max + " spillere online!"));
-                            node.appendChild(newNode2);
-
-                        } else {
-                            newNode.appendChild(document.createTextNode("serveren er Offline :["));
-                            node.appendChild(newNode);
+                            } else {
+                                document.getElementById('isOnline').innerHTML = "Offline :[";
+                            }
                         }
                     }
+                    xhr.send();
                 }
-                xhr.send();
+                reload()
             </script>
-        </div><!-- /content -->
+            <button onclick="reload()">Reload</button>
+            <br>
+            <p><b>Vigtigt:</b> bare fordi du klikker reload betyder det ikke den opdatere antallet af spillere øjeblikelidt.</p>
+            </div><!-- /content -->
         
         <div data-role="footer" data-position="fixed">
             <h5>made by Benjamin1313</h5>
