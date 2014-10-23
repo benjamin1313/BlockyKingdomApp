@@ -21,18 +21,19 @@
                 <p>Serveren er <b id="isOnline"></b></p>
                 <p id="players"></p>
             <script><!--koden som heter infoen om serverens status-->
-                var ip = "46.4.90.169:25587";<!--ipen på den server som man skal havde status på//-->
+                var ip = "46.4.90.169";<!--ipen på den server som man skal havde status på//-->
+                var port = "25587"
                 
                 function reload(){
                     var xhr = new XMLHttpRequest();
-                    xhr.open("GET", "http://minecraft-api.com/v1/get/" + ip, true);
+                    xhr.open("GET", "https://api.syfaro.net/minecraft/1.3/server/status?ip="+ip+"&port="+port, true);
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState == 4) {
                             data = JSON.parse(xhr.responseText);
                             if (data.status) {
                                 document.getElementById('isOnline').innerHTML = 'online';
                                 
-                                document.getElementById('players').innerHTML = "og der er " + data.players.online + "/" + data.players.max + " spillere online!";
+                                document.getElementById('players').innerHTML = "og der er " + data.players.now + "/" + data.players.max + " spillere online!";
 
                             } else {
                                 document.getElementById('isOnline').innerHTML = "Offline :[";
