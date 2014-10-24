@@ -2,7 +2,7 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "io.github.benjamin1313.BlockyKingdomApp"
-        version     = "0.0.2" >
+        version     = "0.0.5" >
 
     <name>BKAppen</name>
 
@@ -15,6 +15,9 @@
     </author>
     
     <icon src="icon.png" />
+    
+    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+
 
 
 </widget>
