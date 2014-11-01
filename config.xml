@@ -18,6 +18,6 @@
     
     <gap:plugin name="org.li8.inappbrowser" version="0.1" />
 
-
+    <feature name="http://api.phonegap.com/1.0/network"/>
 
 </widget>
