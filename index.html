@@ -10,6 +10,16 @@
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 </head>
 <body>
+
+    <script type="text/javascript" charset="utf-8">
+        function openFacebook(){
+            window.open('https://www.facebook.com/BlockyKingdom', '_system', 'location=yes');
+        }
+        function openHjemmeside(){
+            window.open('https://www.facebook.com/BlockyKingdom', '_system', 'location=yes');
+        }
+    </script>
+
     <div data-role="page">
         <div id="header" data-role="header" data-position="fixed" >
             <h1>BlockyKingdom</h1>
@@ -17,10 +27,10 @@
         
         <div data-role="content">
             <a data-role="button" rel="external" href="server.html">Server</a>
-            <a data-role="button" rel="external" href="news.html">News</a></li>
+            <a data-role="button" rel="external" href="news.html">News</a>
             <a data-role="button" rel="external" href="info.html">Info</a>
-            <a data-role="button" rel="external" href="facebook.html">Facebook</a>
-            <a data-role="button" rel="external" href="hjemmeside.html">Hjemmeside</a>
+            <button data-role="button" rel="external" onclick="openFacebook">Facebook</button>
+            <button data-role="button" rel="external" onclick="openHjemmeside">Hjemmeside</button>
         </div><!-- /content -->
         
         <div id="footer" data-role="footer" data-position="fixed">

@@ -4,7 +4,7 @@
         id          = "io.github.benjamin1313.BlockyKingdomApp"
         version     = "0.0.5" >
 
-    <name>BKAppen</name>
+    <name>BlockyKingdom Appen</name>
 
     <description>
         An app for the danish minecraft server BlockyKingdom.
