@@ -16,7 +16,7 @@
     
     <icon src="icon.png" />
     
-    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+    <gap:plugin name="org.li8.inappbrowser" version="0.1" />
 
 
 
