@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" type="text/css"/>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 </head>
 <body>
@@ -17,7 +18,31 @@
         </div><!-- /header -->
         
         <div data-role="content">
-            <p>Vi har fået en app.</p>
+            <div id="feed"></div>
+            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+            <script type="text/javascript">
+
+            google.load("feeds", "1");
+
+            function initialize() {
+              var feed = new google.feeds.Feed("http://blockykingdom.enjin.com/startside/m/13872274/rss/true");
+              feed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
+              feed.load(function(result) {
+                if (!result.error) {
+                  var container = document.getElementById("feed");
+                  for (var i = 0; i < result.feed.entries.length; i++) {
+                    var entry = result.feed.entries[i];
+                    $("#feed").append(entry.title+"<br><br>"+entry.content+"<br><br><hr><br>");
+                  }
+                  
+                }
+              });
+            }
+            google.setOnLoadCallback(initialize);
+
+            </script>
+
+
         </div><!-- /content -->
         
         <div id="footer" data-role="footer" data-position="fixed">

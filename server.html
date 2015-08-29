@@ -18,9 +18,10 @@
 
         <div data-role="content">
                 <div id="node-id"></div>
-                <p>Serveren er <b id="isOnline"></b></p>
+                <p id="isOnline"></p>
                 <p id="players"></p>
-                <p>her er navnene på nogle af dem som er online.</p>
+                <p>Kom ind og få del i morskaben.
+                   <br>IP:46.4.90.169:25587</p>
                 <p id="playersOnline"></p>
             <script><!--koden som heter infoen om serverens status-->
                 var ip = "46.4.90.169";<!--ipen på den server som man skal havde status på//-->
@@ -33,7 +34,7 @@
                         if (xhr.readyState == 4) {
                             data = JSON.parse(xhr.responseText);
                             if (data.status) {
-                                document.getElementById('isOnline').innerHTML = 'online';
+                                document.getElementById('isOnline').innerHTML = 'Serveren er <b>online</b>';
 
                                 document.getElementById('players').innerHTML = "og der er " + data.players.now + "/" + data.players.max + " spillere online!";
 
@@ -46,10 +47,10 @@
                                 }
 
                             } else {
-                                document.getElementById('isOnline').innerHTML = "Offline :[";
+                                document.getElementById('isOnline').innerHTML = "Serveren er <b>Offline</b> :[";
                             }
                         }else {
-                            document.getElementById('isOnline').innerHTML = "Offline :[";
+                            document.getElementById('isOnline').innerHTML = "<b>Kunne ikke forbinde til serveren</b><br> tjek din forbindelse til internetter eller kontakt Benjamin1313 hvis det forsætter";
                         }
                     }
                     xhr.send();
