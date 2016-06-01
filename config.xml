@@ -2,7 +2,7 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "io.github.benjamin1313.BlockyKingdomApp"
-        version     = "0.8.1" >
+        version     = "0.8.2" >
 
     <name>BlockyKingdom Appen</name>
 
@@ -16,6 +16,7 @@
     
     <icon src="icon.png" />
     
+    <plugin name="org.li8.inappbrowser" spec="0.1" source="pgb" />
 
     <feature name="http://api.phonegap.com/1.0/network"/>
 
